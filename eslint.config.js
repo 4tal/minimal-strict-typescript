@@ -60,6 +60,29 @@ export default defineConfig([
             }],
             'prefer-template': 'error',
             'no-template-curly-in-string': 'error',
+            'no-restricted-syntax': [
+                'error',
+                {
+                    selector: 'ClassDeclaration',
+                    message: 'Classes are not allowed. Use functions and plain objects instead.',
+                },
+                {
+                    selector: 'ClassExpression',
+                    message: 'Classes are not allowed. Use functions and plain objects instead.',
+                },
+                {
+                    selector: 'ImportNamespaceSpecifier',
+                    message: 'Import asterisks (* as) are not allowed. Use named imports instead.',
+                },
+                {
+                    selector: 'Literal[value=""]',
+                    message: 'Empty strings are not allowed. Use a constant or template literal instead.',
+                },
+                {
+                    selector: ':function :function:not([type="ArrowFunctionExpression"])',
+                    message: 'Function declarations inside functions are not allowed. Define functions at module level.',
+                },
+            ],
         },
     },
     {
